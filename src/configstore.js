@@ -32,7 +32,8 @@ const configFile = new Store({
         timezone: '',
         debug: true
       }
-    }
+    },
+    schema: 'schildtest'
   }
 });
 export default configFile

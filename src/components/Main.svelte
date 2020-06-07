@@ -2,9 +2,11 @@
   import { configData, component, plugin } from "./../stores.js";
   import Dokument from "./Dokument.svelte";
   import Sidebar from "./Sidebar.svelte";
+  import Sidebar2 from "./Sidebar2.svelte";
   import Navbar from "./Navbar.svelte";
   import Einstellungen from "./Einstellungen.svelte";
   import Start from "./Start.svelte";
+  import Editor from "./Editor.svelte";
   import { repo_worker, schild } from "./App.svelte";
   import * as Comlink from "comlink";
 
@@ -26,7 +28,11 @@
 <div class="grid-container" class:sidebar>
   {#if sidebar}
     <div class="menu has-background-white-ter">
-      <Sidebar {repos} highlight="{show}"/>
+      {#if $component != Editor}
+        <Sidebar {repos} highlight="{show}"/>
+      {:else}
+        <Sidebar2/>
+      {/if}
     </div>
   {/if}
   <div class="main">

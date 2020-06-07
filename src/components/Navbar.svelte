@@ -6,6 +6,7 @@
   import Klasse from "./Klasse.svelte";
   import Einstellungen from "./Einstellungen.svelte";
   import Start from "./Start.svelte";
+  import Editor from "./Editor.svelte";
   import {
     configData,
     selected,
@@ -127,6 +128,10 @@
     }
     $warten = false;
   };
+  const editor = async _ => {
+    if ($component === Editor) $component = zurueck_zu.status ? Schueler : Klasse;
+    else $component = Editor;
+  }
 </script>
 
 <style>
@@ -162,6 +167,11 @@
         </span>
       </button>
     {/if}
+    <button class="button" on:click={() => editor()}>
+      <span class="icon">
+        <i class="mdi">edit</i>
+      </span>
+    </button>
     {#if !$component && !$plugin}
       <button
         class="button"

@@ -15,15 +15,18 @@
     "start:electron": "electron .",
     "dev:development": "rollup --config --watch",
     "dev:electron": "electron .",
-    "postinstall": "electron-builder install-app-deps"
+    "postinstall": "electron-builder install-app-deps",
+    "genapi": "env JAVA_OPTS=\"-Dio.swagger.parser.util.RemoteUrl.trustAll=true -Dio.swagger.v3.parser.util.RemoteUrl.trustAll=true -Dcolor\" openapi-generator generate -g javascript -i http://localhost:4000/openapi.json -o ./src/openapi/ --additional-properties=usePromises=true,modelPropertyNaming=camelCase"
   },
   "devDependencies": {
+    "@openapitools/openapi-generator-cli": "^1.0.13-4.3.1",
     "electron": "^9.0.2",
     "electron-builder": "^22.7.0",
     "electron-packager": "^14.2.1",
     "electron-wix-msi": "^2.2.0",
     "npm-run-all": "^4.1.5",
-    "rollup-plugin-node-externals": "^2.2.0"
+    "rollup-plugin-node-externals": "^2.2.0",
+    "superagent": "^5.2.2"
   },
   "dependencies": {
     "@rollup/plugin-commonjs": "^12.0.0",

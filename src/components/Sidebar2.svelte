@@ -1,0 +1,71 @@
+<script>
+  import { configData, schueler, selected } from "./../stores.js";
+  if ($selected.length != 1) $selected = [$schueler[0]]
+</script>
+
+<style>
+  .sidebar {
+    padding-top: .3rem;
+    border-right: 1px solid #c5cad3;
+  }
+  .sidebar .tree-group {
+    padding: 0;
+    margin: 0;
+  }
+  .sidebar .tree-item {
+    padding: 2px 0 2px 25px;
+    list-style: none;
+    position: relative;
+  }
+  .sidebar .tree-item-label.tree-header {
+    font-weight: bold;
+    text-transform: uppercase;
+  }
+  .sidebar .tree-item.active {
+    background-color: hsl(0, 0%, 71%);
+  }
+  .sidebar .tree-item.hoverable:hover {
+    background-color: DodgerBlue;
+    color: #ffffff;
+  }
+  .sidebar .tree-item:before {
+    font-family: "Material Icons" !important;
+    position: absolute;
+    left: 10px;
+  }
+  .sidebar .tree-item.tree-item--chevron-down:before {
+    font-weight: bold;
+    content: "keyboard_arrow_down";
+  }
+  .sidebar .tree-item.closed:before {
+    font-weight: bold;
+    content: "chevron_right";
+  }
+  .sidebar .tree-item-label {
+    display: flex;
+    cursor: pointer;
+    overflow: hidden;
+    white-space: nowrap;
+    width: 220px;
+    display: inline-block;
+    text-overflow: ellipsis;
+  }
+  .sidebar .tree-item-label:before {
+    font-family: "Material Icons" !important;
+    font-size: 17px;
+    margin-right: 10px;
+  }
+</style>
+
+<div class="sidebar">
+        <ul class="tree-group">
+  {#each $schueler as s}
+            <li
+              class="tree-item hoverable"
+              class:active={s === $selected[0]}
+              on:click={() => $selected = [s]}>
+              <span class="tree-item-label">{s.Name}</span>
+            </li>
+          {/each}
+        </ul>
+</div>
