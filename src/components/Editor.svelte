@@ -1,17 +1,12 @@
 <script>
   import { configData, schueler, selected, stammdaten } from "./../stores.js";
   import Basisdaten from "./Editor/Schueler/Basisdaten.svelte"
-  import {
-    SchuelerApi,
-    SchuelerlisteEintrag,
-    SchuelerStammdaten,
-LehrerStammdaten
-  } from "./../openapi/src/index";
+  import { SchuelerApi } from "./../openapi/src/index";
 
   let schuelerpfad, lehrerpfad;
   let schema = 'schildtest'
   const apiSchueler = new SchuelerApi();
-  apiSchueler.apiClient.plugins = [ request => request.disableTLSCerts() ]
+  // apiSchueler.apiClient.plugins = [ request => request.disableTLSCerts() ]
   apiSchueler.apiClient.authentications.basicAuth.username = 'Admin'
   console.log(apiSchueler)
 

@@ -3,33 +3,34 @@
   export let label
   export let path
   export let name
-      console.log($stammdaten)
+  console.log($stammdaten)
   let value = $stammdaten[name]
+  let ok = true
 
   function update (node, value) {
     return {
 			update(value) {
         console.log(`${path}/${name}`)
-        fetch(`https://localhost:4000${path}/${name}`, {
+        fetch(`http://localhost:4000${path}/${name}`, {
           method: "PUT",
           credentials: 'include',
-          body: value
+          body: value,
+          headers: {'Authorization': 'Basic ' + btoa('Admin:')}
         })
-          .then(response => response.json())
-          .then(data => console.log(data));
+          .then(response => ok = response.ok)
+          .catch(e => console.log(e) && (ok = false));
 			},
-			destroy() {
-				// the node has been removed from the DOM
-			}
+			destroy() { }
 		};
   }
 </script>
-
 
 <div class="field">
   <label class="label">{label}</label>
   <div class="control">
     <input class="input" type="text" bind:value={value} use:update={value}>
   </div>
-  <p class="help">This is a help text</p>
+  {#if !ok}
+    <p class="help">Bitte korrigieren</p>
+  {/if}
 </div>

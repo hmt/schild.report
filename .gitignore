@@ -7,3 +7,4 @@ build/*.map
 .DS_Store
 .vscode
 schild-report.code-workspace
+src/openapi

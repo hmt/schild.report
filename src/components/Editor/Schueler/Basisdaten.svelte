@@ -11,10 +11,12 @@
   </header>
   <div class="card-content">
     <div class="content">
-      <!-- <Form {path}> -->
-        <Input {path} name={'vorname'} label="Vorname"/>
-        <Input {path} name={'nachname'} label="Nachname"/>
-      <!-- </Form> -->
+      <Input {path} name={'vorname'} label="Vorname"/>
+      <Input {path} name={'nachname'} label="Nachname"/>
+      <Input {path} name={'zusatzNachname'} label="Zusatz Nachname"/>
+      <Input {path} name={'alleVornamen'} label="alle Vornamen"/>
+      <Input {path} name={'geburtsort'} label="Geburtsort"/>
+      <Input {path} name={'geburtsname'} label="Geburtsname"/>
     </div>
   </div>
 </div>
